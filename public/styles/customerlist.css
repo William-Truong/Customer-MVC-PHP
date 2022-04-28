@@ -1,0 +1,38 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+a.create-link {
+  font-size: 24px;
+}
+
+thead tr {
+  border: solid 1px black;
+}
+form {
+  position: relative;
+}
+form input[name="keyword"] {
+  border-radius: 0;
+  margin-right: 0;
+  padding-right: 45px;
+}
+form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding-inline: 15px;
+}
+form button:hover {
+  color: dodgerblue;
+}
