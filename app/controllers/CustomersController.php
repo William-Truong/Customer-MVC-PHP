@@ -12,7 +12,15 @@ class CustomersController extends Controller
     {
         // Authentication
         if (Role::is_admin()) {
-            $customers = $this->model->getCustomers();
+            $customers = array();
+            if ($this->method == 'POST') {
+                $keyword = Helper::input_post('keyword');
+                if ($keyword) {
+                    $customers = $this->model->searchCustomer($keyword);
+                }
+            } else {
+                $customers = $this->model->getCustomers();
+            }
             $this->view('customer/list', ['customers' => $customers]);
         } else {
             $message = "You are not an Admin and access denied!";

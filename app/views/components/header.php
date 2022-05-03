@@ -52,7 +52,7 @@ a.nav-link i {
                         <span><?= $username ?></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="account-menu">
-                        <li><a class="dropdown-item" href="LogOut">Log out</a></li>
+                        <li><a class="dropdown-item" href="<?= ROOT_URL ?>LogOut">Log out</a></li>
                     </ul>
                 </div>
             </div>

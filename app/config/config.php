@@ -5,3 +5,4 @@ const DB_HOST = 'localhost';
 const DB_USER = 'root';
 const DB_PASS = '';
 const DB_NAME = 'customer_management';
+const SESSION_USER_TOKEN = 'ss_user_token';

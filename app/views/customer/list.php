@@ -35,7 +35,7 @@
                         ADD
                     </a></div>
                 <div class="col-4">
-                    <form action="#" method="POST" class="d-flex align-items-center justify-content-end">
+                    <form action="Customers" method="POST" class="d-flex align-items-center justify-content-end">
                         <input type="text" name="keyword" class="form-control" placeholder="Search...">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>

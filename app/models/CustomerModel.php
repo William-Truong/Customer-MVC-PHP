@@ -43,4 +43,10 @@ class CustomerModel extends Model
         $result = $this->query($this->connection, $sql);
         return $result;
     }
+    public function searchCustomer($keyword)
+    {
+        $sql = "SELECT * FROM customer WHERE name LIKE '%${keyword}%'";
+        $customers = $this->all($this->connection, $sql);
+        return $customers;
+    }
 }

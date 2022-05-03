@@ -4,7 +4,7 @@ class Role
     // Hàm thiết lập là đã đăng nhập
     public static function set_logged($username, $level)
     {
-        Session::session_set('ss_user_token', array(
+        Session::session_set(SESSION_USER_TOKEN, array(
             'username' => $username,
             'level' => $level
         ));
@@ -13,13 +13,13 @@ class Role
     // Hàm thiết lập đăng xuất
     public static function set_logout()
     {
-        Session::session_delete('ss_user_token');
+        Session::session_delete(SESSION_USER_TOKEN);
     }
 
     // Hàm kiểm tra trạng thái người dùng đã đăng hập chưa
     public static function is_logged()
     {
-        $user = Session::session_get('ss_user_token');
+        $user = Session::session_get(SESSION_USER_TOKEN);
         return $user;
     }
     // Hàm kiểm tra có phải là admin hay không
@@ -30,5 +30,12 @@ class Role
             return true;
         }
         return false;
+    }
+
+    public static function is_Open_Database()
+    {
+        $connection = new Model();
+        $result = $connection->getConnection();
+        return $result ? true : false;
     }
 }

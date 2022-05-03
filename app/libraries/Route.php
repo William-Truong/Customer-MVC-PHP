@@ -12,7 +12,6 @@ class Route
         if (!isset($url[0])) {
             $url[0] = 'Dashboard';
         }
-
         if (file_exists('../app/controllers/' . ucwords($url[0]) . 'Controller' . '.php')) {
 
             // If exists, set as controller
@@ -21,9 +20,14 @@ class Route
             // Unset 0 Index
             unset($url[0]);
 
-            //Check logged if not yet then redirect to login
+            //Nếu chưa đăng nhập và không phải vào link signup thì điều hướng đến login
             if (!Role::is_logged() && $this->controller != "SignUpController") {
                 $this->controller = "LoginController";
+            }
+
+            // Đăng xuất tài khoản trước khi đến /SignUp
+            if ($this->controller == "SignUpController" && Role::is_logged()) {
+                Role::set_logout();
             }
 
             // Require the controller
