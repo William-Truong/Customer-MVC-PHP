@@ -2,17 +2,17 @@
 class AccountModel extends Model
 {
     private $connection;
-    function __construct()
+    public function __construct()
     {
         $this->connection = $this->getConnection();
     }
-    function getAccount($username, $password)
+    public function getAccount($username, $password)
     {
         $sql = "SELECT * FROM account WHERE username='${username}' AND password='${password}'";
         $account = $this->find($this->connection, $sql);
         return $account;
     }
-    function createAccount($account)
+    public function createAccount($account)
     {
         $name = $account['name'];
         $username = $account['username'];
