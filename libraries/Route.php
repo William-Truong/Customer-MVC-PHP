@@ -9,19 +9,21 @@ class Route
     private $params = [];
     public function __construct()
     {
+        // Get Url array from Server request
         $url = $this->getUrl();
 
-        // CONTROLLER
+        //Set Default Controller
         if (!isset($url[0])) {
             $url[0] = 'Dashboard';
         }
 
+        // Check if controller file exits
         if (file_exists('./Controllers/' . ucwords($url[0]) . 'Controller' . '.php')) {
 
             // If exists, set as controller
             $nameController = ucwords($url[0] . 'Controller');
 
-            // Unset 0 Index
+            // Clear url[Controller]
             unset($url[0]);
 
             //Nếu chưa đăng nhập và không phải vào link signup thì điều hướng đến login
@@ -33,10 +35,12 @@ class Route
             if ($nameController == "SignUpController" && Role::is_logged()) {
                 Role::set_logout();
             }
+
+            // Call Controller
             $nameController = "App\Controllers\\$nameController";
             $this->controller = new $nameController();
         } else {
-            // If not exists, show error
+            // Show error
             exit("<h1 style='text-align:center;font-size:50px; color: red;'>404 PAGE NOT FOUND!</h1>");
         }
 
@@ -50,11 +54,12 @@ class Route
             }
         }
 
-        // Params
         // Get params
         $this->params = $url ? array_values($url) : [];
         call_user_func_array([$this->controller, $this->action], $this->params);
     }
+
+    // Return array URL {Controller/Action/Params}
     public function getUrl()
     {
         if (isset($_GET['url'])) {
