@@ -2,9 +2,6 @@
 
 namespace App\Libraries;
 
-use App\Controllers;
-use App\Libraries\Role;
-
 class Route
 {
     private $controller;
@@ -22,24 +19,22 @@ class Route
         if (file_exists('./Controllers/' . ucwords($url[0]) . 'Controller' . '.php')) {
 
             // If exists, set as controller
-            $this->controller = ucwords($url[0] . 'Controller');
+            $nameController = ucwords($url[0] . 'Controller');
 
             // Unset 0 Index
             unset($url[0]);
 
             //Nếu chưa đăng nhập và không phải vào link signup thì điều hướng đến login
-            if (!Role::is_logged() && $this->controller != "SignUpController") {
-                $this->controller = "LoginController";
+            if (!Role::is_logged() && $nameController != "SignUpController") {
+                $nameController = "LoginController";
             }
 
             // Đăng xuất tài khoản trước khi đến /SignUp
-            if ($this->controller == "SignUpController" && Role::is_logged()) {
+            if ($nameController == "SignUpController" && Role::is_logged()) {
                 Role::set_logout();
             }
-
-            // Require the controller
-            require_once './Controllers/' . $this->controller . '.php';
-            $this->controller = new $this->controller;
+            $nameController = "App\Controllers\\$nameController";
+            $this->controller = new $nameController();
         } else {
             // If not exists, show error
             exit("<h1 style='text-align:center;font-size:50px; color: red;'>404 PAGE NOT FOUND!</h1>");

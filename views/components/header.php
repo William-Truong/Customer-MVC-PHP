@@ -1,7 +1,6 @@
 <?php
 
 use App\Libraries\Role;
-use App\Config\Config;
 
 $username = Role::is_logged()['username'] ?? 'Admin';
 ?>
@@ -41,11 +40,11 @@ a.nav-link i {
             <div class="col">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= Config::ROOT_URL ?>"><i class="fa-solid fa-house"></i>
+                        <a class="nav-link" href="<?= ROOT_URL ?>"><i class="fa-solid fa-house"></i>
                             Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= Config::ROOT_URL ?>Customers"><i
+                        <a class="nav-link" href="<?= ROOT_URL ?>Customers"><i
                                 class="fa-solid fa-people-group"></i>Customers</a>
                     </li>
                 </ul>
@@ -58,7 +57,7 @@ a.nav-link i {
                         <span><?= $username ?></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="account-menu">
-                        <li><a class="dropdown-item" href="<?= Config::ROOT_URL ?>LogOut">Log out</a></li>
+                        <li><a class="dropdown-item" href="<?= ROOT_URL ?>LogOut">Log out</a></li>
                     </ul>
                 </div>
             </div>

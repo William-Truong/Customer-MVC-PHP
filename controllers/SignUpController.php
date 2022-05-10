@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\AccountModel;
 use App\Libraries\Role;
 use App\Libraries\Helpers;
 
@@ -12,7 +13,7 @@ class SignUpController extends Controller
     public function __construct()
     {
         $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->model = $this->loadModel('AccountModel');
+        $this->model = new AccountModel();
     }
     public function index()
     {

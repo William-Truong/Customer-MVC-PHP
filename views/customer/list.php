@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <?php include  ROOT_DIR . "views/components/header.php"; ?>
+    <?php include  ROOT_DIR . "/views/components/header.php"; ?>
     <main>
         <section class="container">
 

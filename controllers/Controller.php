@@ -4,14 +4,6 @@ namespace App\Controllers;
 
 class Controller
 {
-    public function loadModel($model)
-    {
-        //Require model file
-        require_once './Models/' . $model . '.php';
-        //Instantiate model
-        return new $model();
-    }
-
     //Load the view (checks for the file)
     public function view($view, array $data = [])
     {

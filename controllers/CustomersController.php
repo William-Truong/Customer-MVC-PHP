@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Libraries\Role;
 use App\Libraries\Helpers;
+use App\Models\CustomerModel;
 
 class CustomersController extends Controller
 {
@@ -12,7 +13,7 @@ class CustomersController extends Controller
     public function __construct()
     {
         $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->model = $this->loadModel('CustomerModel');
+        $this->model = new CustomerModel();
     }
     public function index()
     {
