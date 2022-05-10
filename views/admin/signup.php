@@ -16,8 +16,7 @@
     </script>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="../../public/scripts/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="./public/styles/login.css">
+    <link rel="stylesheet" href="./views/styles/login.css">
 </head>
 
 <body>

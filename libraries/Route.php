@@ -1,9 +1,9 @@
 <?php
 class Route
 {
-    protected $controller;
-    protected $action = 'index';
-    protected $params = [];
+    private $controller;
+    private $action = 'index';
+    private $params = [];
     public function __construct()
     {
         $url = $this->getUrl();
@@ -12,7 +12,7 @@ class Route
         if (!isset($url[0])) {
             $url[0] = 'Dashboard';
         }
-        if (file_exists('../app/controllers/' . ucwords($url[0]) . 'Controller' . '.php')) {
+        if (file_exists('./controllers/' . ucwords($url[0]) . 'Controller' . '.php')) {
 
             // If exists, set as controller
             $this->controller = ucwords($url[0] . 'Controller');
@@ -31,11 +31,11 @@ class Route
             }
 
             // Require the controller
-            require_once '../app/controllers/' . $this->controller . '.php';
+            require_once './controllers/' . $this->controller . '.php';
             $this->controller = new $this->controller;
         } else {
             // If not exists, show error
-            echo "<h1 style='text-align:center;font-size:50px; color: red;'>PAGE NOT FOUND!</h1>";
+            exit("<h1 style='text-align:center;font-size:50px; color: red;'>404 PAGE NOT FOUND!</h1>");
         }
 
         // Action

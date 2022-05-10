@@ -15,7 +15,7 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/3fc531ce88.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles/customerlist.css">
+    <link rel="stylesheet" href="./views/styles/customerlist.css">
 </head>
 
 <body>
@@ -30,15 +30,16 @@
             </div>
 
             <div class="row mb-3 justify-content-between align-items-center">
-                <div class="col-2"><a href="Customers/create" class="create-link ">
-                        <i class="fa-solid fa-circle-plus"></i>
-                        ADD
-                    </a></div>
                 <div class="col-4">
                     <form action="Customers" method="POST" class="d-flex align-items-center justify-content-end">
-                        <input type="text" name="keyword" class="form-control" placeholder="Search...">
+                        <input type="text" name="keyword" class="form-control" placeholder="Search..." required>
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
+                </div>
+                <div class="col-2 text-end">
+                    <a href="Customers/create" class="create-link ">
+                        <i class="fa-solid fa-circle-plus"></i> Add New
+                    </a>
                 </div>
             </div>
 

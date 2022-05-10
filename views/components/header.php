@@ -1,7 +1,7 @@
 <?php $username = Role::is_logged()['username'] ?? 'Admin'; ?>
 <style>
 header {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     padding-block: 15px;
     background-color: #212529;
 }

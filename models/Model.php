@@ -4,11 +4,7 @@ class Model
     public function getConnection()
     {
         $connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-        if ($connection->connect_error) {
-            die("Connect fail : " . $connection->connect_error);
-            return null;
-        }
-        return $connection;
+        return ($connection->connect_error) ? null : $connection;
     }
 
     public function query($connection, $sql = '')

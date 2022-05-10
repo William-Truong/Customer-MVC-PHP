@@ -1,10 +1,11 @@
 <?php
+
 class Controller
 {
     public function loadModel($model)
     {
         //Require model file
-        require_once '../app/models/' . $model . '.php';
+        require_once './models/' . $model . '.php';
         //Instantiate model
         return new $model();
     }
@@ -15,8 +16,8 @@ class Controller
         foreach ($data as $key => $value) {
             $$key = $value;
         }
-        if (file_exists('../app/views/' . $view . '.php'))
-            require_once '../app/views/' . $view . '.php';
+        if (file_exists('./views/' . $view . '.php'))
+            require_once './views/' . $view . '.php';
         else
             die("View does not exists.");
     }
