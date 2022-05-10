@@ -1,4 +1,10 @@
 <?php
+
+namespace App\Controllers;
+
+use App\Libraries\Role;
+use App\Libraries\Helpers;
+
 class LogOutController extends Controller
 {
     function __construct()
@@ -7,6 +13,6 @@ class LogOutController extends Controller
     }
     function index()
     {
-        Helper::redirect('Login');
+        Helpers::redirect('Login');
     }
 }

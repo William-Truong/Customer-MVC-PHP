@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Libraries\Role;
+use App\Libraries\Helpers;
 
 class LoginController extends Controller
 {
@@ -14,7 +18,7 @@ class LoginController extends Controller
     {
         if ($this->method == 'GET') {
             if (Role::is_logged())
-                Helper::redirect("Dashboard");
+                Helpers::redirect("Dashboard");
             else
                 $this->view('admin/login');
         } elseif ($this->method == 'POST') {

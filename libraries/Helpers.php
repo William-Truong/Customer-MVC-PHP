@@ -1,10 +1,15 @@
 <?php
-class Helper
+
+namespace App\Libraries;
+
+use App\Config\Config as config;
+
+class Helpers
 {
     // Hàm redirect
     public static function redirect($url)
     {
-        header("Location:" . ROOT_URL . $url);
+        header("Location:" . config::ROOT_URL . $url);
         exit();
     }
 

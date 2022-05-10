@@ -1,4 +1,10 @@
 <?php
+
+namespace App\Libraries;
+
+use App\Controllers;
+use App\Libraries\Role;
+
 class Route
 {
     private $controller;
@@ -12,7 +18,8 @@ class Route
         if (!isset($url[0])) {
             $url[0] = 'Dashboard';
         }
-        if (file_exists('./controllers/' . ucwords($url[0]) . 'Controller' . '.php')) {
+
+        if (file_exists('./Controllers/' . ucwords($url[0]) . 'Controller' . '.php')) {
 
             // If exists, set as controller
             $this->controller = ucwords($url[0] . 'Controller');
@@ -31,7 +38,7 @@ class Route
             }
 
             // Require the controller
-            require_once './controllers/' . $this->controller . '.php';
+            require_once './Controllers/' . $this->controller . '.php';
             $this->controller = new $this->controller;
         } else {
             // If not exists, show error

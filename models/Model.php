@@ -1,9 +1,14 @@
 <?php
+
+namespace App\Models;
+
+use App\Config as config;
+
 class Model
 {
     public function getConnection()
     {
-        $connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $connection = new mysqli(config\DB_HOST, config\DB_USER, config\DB_PASS, config\DB_NAME);
         return ($connection->connect_error) ? null : $connection;
     }
 

@@ -1,4 +1,10 @@
 <?php
+
+namespace App\Controllers;
+
+use App\Libraries\Role;
+use App\Libraries\Helpers;
+
 class SignUpController extends Controller
 {
     private $method;
@@ -16,7 +22,7 @@ class SignUpController extends Controller
             $result = $this->model->createAccount($_POST);
             if ($result) {
                 Role::set_logged($_POST['name'], $_POST['level']);
-                Helper::redirect('dashboard');
+                Helpers::redirect('dashboard');
             } else {
                 $message = "Can't not sign up!";
                 $this->view('admin/signup', ['message' => $message]);

@@ -1,10 +1,15 @@
 <?php
+
+namespace App\Libraries;
+
+use App\Config\Config as config;
+
 class Role
 {
     // Hàm thiết lập là đã đăng nhập
     public static function set_logged($username, $level)
     {
-        Session::session_set(SESSION_USER_TOKEN, array(
+        Session::session_set(config::SESSION_USER_TOKEN, array(
             'username' => $username,
             'level' => $level
         ));
@@ -13,13 +18,13 @@ class Role
     // Hàm thiết lập đăng xuất
     public static function set_logout()
     {
-        Session::session_delete(SESSION_USER_TOKEN);
+        Session::session_delete(config::SESSION_USER_TOKEN);
     }
 
     // Hàm kiểm tra trạng thái người dùng đã đăng hập chưa
     public static function is_logged()
     {
-        $user = Session::session_get(SESSION_USER_TOKEN);
+        $user = Session::session_get(config::SESSION_USER_TOKEN);
         return $user;
     }
     // Hàm kiểm tra có phải là admin hay không
@@ -30,12 +35,5 @@ class Role
             return true;
         }
         return false;
-    }
-
-    public static function is_Open_Database()
-    {
-        $connection = new Model();
-        $result = $connection->getConnection();
-        return $result ? true : false;
     }
 }

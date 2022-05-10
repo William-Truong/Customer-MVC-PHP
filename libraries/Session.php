@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Libraries;
+
 class Session
 {
     // Gán session (SET)

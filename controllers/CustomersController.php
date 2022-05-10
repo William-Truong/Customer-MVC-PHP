@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Libraries\Role;
+use App\Libraries\Helpers;
 
 class CustomersController extends Controller
 {
@@ -16,7 +20,7 @@ class CustomersController extends Controller
         if (Role::is_admin()) {
             $customers = array();
             if ($this->method == 'POST') {
-                $keyword = Helper::input_post('keyword');
+                $keyword = Helpers::input_post('keyword');
                 if ($keyword) {
                     $customers = $this->model->searchCustomer($keyword);
                 }
@@ -37,7 +41,7 @@ class CustomersController extends Controller
             } elseif ($this->method == 'POST') {
                 $result = $this->model->createCustomer($_POST);
                 if ($result)
-                    Helper::redirect('Customers');
+                    Helpers::redirect('Customers');
                 else
                     echo 'ERROR';
             }
@@ -55,7 +59,7 @@ class CustomersController extends Controller
             } elseif ($this->method == 'POST') {
                 $result = $this->model->editCustomer($_POST);
                 if ($result)
-                    Helper::redirect('Customers');
+                    Helpers::redirect('Customers');
                 else
                     echo 'Error';
             }
@@ -68,7 +72,7 @@ class CustomersController extends Controller
     {
         if (Role::is_admin()) {
             $result = $this->model->deleteCustomer($id);
-            Helper::redirect('Customers');
+            Helpers::redirect('Customers');
         } else {
             $message = "You are not an Admin and access denied!";
             $this->view('dashboard', ['message' => $message]);
